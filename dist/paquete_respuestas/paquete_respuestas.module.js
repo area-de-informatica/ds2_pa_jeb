@@ -18,7 +18,7 @@ exports.PaqueteRespuestasModule = PaqueteRespuestasModule;
 exports.PaqueteRespuestasModule = PaqueteRespuestasModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: paquete_respuestas_schema_1.PaqueteRespuesta.name, schema: paquete_respuestas_schema_1.PaqueteRespuestaSchema }])
+            mongoose_1.MongooseModule.forFeature([{ name: paquete_respuestas_schema_1.PaqueteRespuestas.name, schema: paquete_respuestas_schema_1.PaqueteRespuestasSchema }])
         ],
         controllers: [paquete_respuestas_controller_1.PaqueteRespuestasController],
         providers: [paquete_respuestas_service_1.PaqueteRespuestasService],

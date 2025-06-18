@@ -10,7 +10,7 @@ exports.TestService = void 0;
 const common_1 = require("@nestjs/common");
 let TestService = class TestService {
     create(createTestDto) {
-        return 'This action adds a new test';
+        return createTestDto;
     }
     findAll() {
         return `This action returns all test`;

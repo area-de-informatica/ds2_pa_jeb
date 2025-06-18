@@ -9,24 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaqueteRespuestasSchema = exports.PaqueteRespuestas = void 0;
+exports.ReporteAISchema = exports.ReporteAI = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-let PaqueteRespuestas = class PaqueteRespuestas extends mongoose_2.Document {
-    tipo;
-    valor;
+let ReporteAI = class ReporteAI extends mongoose_2.Document {
+    retroalimentacion;
+    calificacion;
 };
-exports.PaqueteRespuestas = PaqueteRespuestas;
+exports.ReporteAI = ReporteAI;
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], PaqueteRespuestas.prototype, "tipo", void 0);
+], ReporteAI.prototype, "retroalimentacion", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], PaqueteRespuestas.prototype, "valor", void 0);
-exports.PaqueteRespuestas = PaqueteRespuestas = __decorate([
+    __metadata("design:type", Number)
+], ReporteAI.prototype, "calificacion", void 0);
+exports.ReporteAI = ReporteAI = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
-], PaqueteRespuestas);
-exports.PaqueteRespuestasSchema = mongoose_1.SchemaFactory.createForClass(PaqueteRespuestas);
-//# sourceMappingURL=paquete_respuestas.schema.js.map
+], ReporteAI);
+exports.ReporteAISchema = mongoose_1.SchemaFactory.createForClass(ReporteAI);
+//# sourceMappingURL=reporte_ai.schema.js.map

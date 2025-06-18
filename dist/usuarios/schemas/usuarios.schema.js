@@ -9,24 +9,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaqueteRespuestasSchema = exports.PaqueteRespuestas = void 0;
+exports.UsuarioSchema = exports.Usuario = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-let PaqueteRespuestas = class PaqueteRespuestas extends mongoose_2.Document {
-    tipo;
-    valor;
+let Usuario = class Usuario extends mongoose_2.Document {
+    clave;
+    correo;
+    sexo;
+    edad;
+    nombre;
+    apellido;
+    rol;
 };
-exports.PaqueteRespuestas = PaqueteRespuestas;
+exports.Usuario = Usuario;
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], PaqueteRespuestas.prototype, "tipo", void 0);
+], Usuario.prototype, "clave", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ unique: true }),
+    __metadata("design:type", String)
+], Usuario.prototype, "correo", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], PaqueteRespuestas.prototype, "valor", void 0);
-exports.PaqueteRespuestas = PaqueteRespuestas = __decorate([
+], Usuario.prototype, "sexo", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], Usuario.prototype, "edad", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "nombre", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "apellido", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "rol", void 0);
+exports.Usuario = Usuario = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
-], PaqueteRespuestas);
-exports.PaqueteRespuestasSchema = mongoose_1.SchemaFactory.createForClass(PaqueteRespuestas);
-//# sourceMappingURL=paquete_respuestas.schema.js.map
+], Usuario);
+exports.UsuarioSchema = mongoose_1.SchemaFactory.createForClass(Usuario);
+//# sourceMappingURL=usuarios.schema.js.map

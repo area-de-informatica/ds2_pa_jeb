@@ -10,7 +10,7 @@ exports.PreguntasService = void 0;
 const common_1 = require("@nestjs/common");
 let PreguntasService = class PreguntasService {
     create(createPreguntaDto) {
-        return 'This action adds a new pregunta';
+        return createPreguntaDto;
     }
     findAll() {
         return `This action returns all preguntas`;

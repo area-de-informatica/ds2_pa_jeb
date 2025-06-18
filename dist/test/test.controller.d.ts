@@ -4,7 +4,7 @@ import { UpdateTestDto } from './dto/update-test.dto';
 export declare class TestController {
     private readonly testService;
     constructor(testService: TestService);
-    create(createTestDto: CreateTestDto): string;
+    create(createTestDto: CreateTestDto): CreateTestDto;
     findAll(): string;
     findOne(id: string): string;
     update(id: string, updateTestDto: UpdateTestDto): string;

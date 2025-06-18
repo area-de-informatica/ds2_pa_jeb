@@ -1,7 +1,7 @@
 import { CreateTestDto } from './dto/create-test.dto';
 import { UpdateTestDto } from './dto/update-test.dto';
 export declare class TestService {
-    create(createTestDto: CreateTestDto): string;
+    create(createTestDto: CreateTestDto): CreateTestDto;
     findAll(): string;
     findOne(id: number): string;
     update(id: number, updateTestDto: UpdateTestDto): string;

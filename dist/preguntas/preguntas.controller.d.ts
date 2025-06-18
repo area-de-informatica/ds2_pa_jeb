@@ -4,7 +4,7 @@ import { UpdatePreguntaDto } from './dto/update-pregunta.dto';
 export declare class PreguntasController {
     private readonly preguntasService;
     constructor(preguntasService: PreguntasService);
-    create(createPreguntaDto: CreatePreguntaDto): string;
+    create(createPreguntaDto: CreatePreguntaDto): CreatePreguntaDto;
     findAll(): string;
     findOne(id: string): string;
     update(id: string, updatePreguntaDto: UpdatePreguntaDto): string;

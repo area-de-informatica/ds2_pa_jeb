@@ -10,7 +10,7 @@ exports.UsuariosService = void 0;
 const common_1 = require("@nestjs/common");
 let UsuariosService = class UsuariosService {
     create(createUsuarioDto) {
-        return 'This action adds a new usuario';
+        return createUsuarioDto;
     }
     findAll() {
         return `This action returns all usuarios`;
@@ -19,7 +19,7 @@ let UsuariosService = class UsuariosService {
         return `This action returns a #${id} usuario`;
     }
     update(id, updateUsuarioDto) {
-        return `This action updates a #${id} usuario`;
+        return `This action updates a #${id} usuario ${updateUsuarioDto}`;
     }
     remove(id) {
         return `This action removes a #${id} usuario`;

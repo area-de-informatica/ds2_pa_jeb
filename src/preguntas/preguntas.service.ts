@@ -5,7 +5,7 @@ import { UpdatePreguntaDto } from './dto/update-pregunta.dto';
 @Injectable()
 export class PreguntasService {
   create(createPreguntaDto: CreatePreguntaDto) {
-    return 'This action adds a new pregunta';
+    return createPreguntaDto;
   }
 
   findAll() {
