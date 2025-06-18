@@ -1,34 +1,35 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ReporteAiService } from './reporte_ai.service';
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateReporteAiDto } from './dto/create-reporte_ai.dto';
 import { UpdateReporteAiDto } from './dto/update-reporte_ai.dto';
+import { ReporteAi } from './schemas/reporte_ai.schema';
 
-@Controller('reporte-ai')
-export class ReporteAiController {
-  constructor(private readonly reporteAiService: ReporteAiService) {}
 
-  @Post()
-  create(@Body() createReporteAiDto: CreateReporteAiDto) {
-    return this.reporteAiService.create(createReporteAiDto);
+@Injectable()
+export class ReporteAiService {
+  constructor(
+    @InjectModel(ReporteAi.name) private readonly reporteModel: Model<ReporteAi>,
+  ) {}
+
+  async create(createReporteAiDto: CreateReporteAiDto): Promise<ReporteAi> {
+    const reporte = new this.reporteModel(createReporteAiDto);
+    return reporte.save();
   }
 
-  @Get()
-  findAll() {
-    return this.reporteAiService.findAll();
+  async findAll(): Promise<ReporteAi[]> {
+    return this.reporteModel.find().exec();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.reporteAiService.findOne(+id);
+  async findOne(id: string): Promise<ReporteAi | null> {
+    return this.reporteModel.findById(id).exec();
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReporteAiDto: UpdateReporteAiDto) {
-    return this.reporteAiService.update(+id, updateReporteAiDto);
+  async update(id: string, dto: UpdateReporteAiDto): Promise<ReporteAi | null> {
+    return this.reporteModel.findByIdAndUpdate(id, dto, { new: true }).exec();
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.reporteAiService.remove(+id);
+  async remove(id: string): Promise<ReporteAi | null> {
+    return this.reporteModel.findByIdAndDelete(id).exec();
   }
 }

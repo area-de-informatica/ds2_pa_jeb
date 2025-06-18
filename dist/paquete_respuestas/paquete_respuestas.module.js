@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PaqueteRespuestasModule = void 0;
 const common_1 = require("@nestjs/common");
+const mongoose_1 = require("@nestjs/mongoose");
 const paquete_respuestas_service_1 = require("./paquete_respuestas.service");
 const paquete_respuestas_controller_1 = require("./paquete_respuestas.controller");
-const mongoose_1 = require("@nestjs/mongoose");
 const paquete_respuestas_schema_1 = require("./schemas/paquete_respuestas.schema");
 let PaqueteRespuestasModule = class PaqueteRespuestasModule {
 };
@@ -18,7 +18,9 @@ exports.PaqueteRespuestasModule = PaqueteRespuestasModule;
 exports.PaqueteRespuestasModule = PaqueteRespuestasModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: paquete_respuestas_schema_1.PaqueteRespuestas.name, schema: paquete_respuestas_schema_1.PaqueteRespuestasSchema }])
+            mongoose_1.MongooseModule.forFeature([
+                { name: paquete_respuestas_schema_1.PaqueteRespuesta.name, schema: paquete_respuestas_schema_1.PaqueteRespuestaSchema },
+            ]),
         ],
         controllers: [paquete_respuestas_controller_1.PaqueteRespuestasController],
         providers: [paquete_respuestas_service_1.PaqueteRespuestasService],

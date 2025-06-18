@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
-const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
+const mongoose_1 = require("@nestjs/mongoose");
 const usuarios_module_1 = require("./usuarios/usuarios.module");
 const preguntas_module_1 = require("./preguntas/preguntas.module");
 const paquete_respuestas_module_1 = require("./paquete_respuestas/paquete_respuestas.module");

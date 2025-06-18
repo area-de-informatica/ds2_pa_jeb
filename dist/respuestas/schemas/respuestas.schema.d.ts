@@ -1,7 +1,8 @@
 import { Document } from 'mongoose';
 export declare class Respuesta extends Document {
-    tipo: string;
-    valor: string;
+    texto: string;
+    correcta: boolean;
+    preguntaId: string;
 }
 export declare const RespuestaSchema: import("mongoose").Schema<Respuesta, import("mongoose").Model<Respuesta, any, any, any, Document<unknown, any, Respuesta, any> & Respuesta & Required<{
     _id: unknown;

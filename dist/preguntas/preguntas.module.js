@@ -9,18 +9,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PreguntasModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
-const preguntas_schema_1 = require("./schemas/preguntas.schema");
 const preguntas_service_1 = require("./preguntas.service");
 const preguntas_controller_1 = require("./preguntas.controller");
+const preguntas_schema_1 = require("./schemas/preguntas.schema");
 let PreguntasModule = class PreguntasModule {
 };
 exports.PreguntasModule = PreguntasModule;
 exports.PreguntasModule = PreguntasModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forFeature([
-                { name: preguntas_schema_1.Pregunta.name, schema: preguntas_schema_1.PreguntaSchema },
-            ]),
+            mongoose_1.MongooseModule.forFeature([{ name: preguntas_schema_1.Pregunta.name, schema: preguntas_schema_1.PreguntaSchema }]),
         ],
         controllers: [preguntas_controller_1.PreguntasController],
         providers: [preguntas_service_1.PreguntasService],

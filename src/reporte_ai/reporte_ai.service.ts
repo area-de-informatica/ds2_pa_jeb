@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateReporteAiDto } from './dto/create-reporte_ai.dto';
 import { UpdateReporteAiDto } from './dto/update-reporte_ai.dto';
+import { ReporteAi } from './schemas/reporte_ai.schema';
 
 @Injectable()
 export class ReporteAiService {
-  create(createReporteAiDto: CreateReporteAiDto) {
-    return 'This action adds a new reporteAi';
+  constructor(
+    @InjectModel(ReporteAi.name) private readonly reporteModel: Model<ReporteAi>,
+  ) {}
+
+  async create(createReporteAiDto: CreateReporteAiDto): Promise<ReporteAi> {
+    const reporte = new this.reporteModel(createReporteAiDto);
+    return reporte.save();
   }
 
-  findAll() {
-    return `This action returns all reporteAi`;
+  async findAll(): Promise<ReporteAi[]> {
+    return this.reporteModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} reporteAi`;
+  async findOne(id: string): Promise<ReporteAi | null> {
+    return this.reporteModel.findById(id).exec();
   }
 
-  update(id: number, updateReporteAiDto: UpdateReporteAiDto) {
-    return `This action updates a #${id} reporteAi`;
+  async update(id: string, dto: UpdateReporteAiDto): Promise<ReporteAi | null> {
+    return this.reporteModel.findByIdAndUpdate(id, dto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} reporteAi`;
+  async remove(id: string): Promise<ReporteAi | null> {
+    return this.reporteModel.findByIdAndDelete(id).exec();
   }
 }

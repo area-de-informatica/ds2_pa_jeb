@@ -13,18 +13,23 @@ exports.RespuestaSchema = exports.Respuesta = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 let Respuesta = class Respuesta extends mongoose_2.Document {
-    tipo;
-    valor;
+    texto;
+    correcta;
+    preguntaId;
 };
 exports.Respuesta = Respuesta;
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Respuesta.prototype, "tipo", void 0);
+], Respuesta.prototype, "texto", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], Respuesta.prototype, "correcta", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Respuesta.prototype, "valor", void 0);
+], Respuesta.prototype, "preguntaId", void 0);
 exports.Respuesta = Respuesta = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], Respuesta);

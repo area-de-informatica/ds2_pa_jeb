@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Pregunta } from './schemas/preguntas.schema';
 import { CreatePreguntaDto } from './dto/create-pregunta.dto';
 import { UpdatePreguntaDto } from './dto/update-pregunta.dto';
 
 @Injectable()
 export class PreguntasService {
-  create(createPreguntaDto: CreatePreguntaDto) {
-    return createPreguntaDto;
+  constructor(
+    @InjectModel(Pregunta.name) private readonly preguntaModel: Model<Pregunta>,
+  ) {}
+
+  async create(createPreguntaDto: CreatePreguntaDto): Promise<Pregunta> {
+    const pregunta = new this.preguntaModel(createPreguntaDto);
+    return pregunta.save();
   }
 
-  findAll() {
-    return `This action returns all preguntas`;
+  async findAll(): Promise<Pregunta[]> {
+    return this.preguntaModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} pregunta`;
+  async findOne(id: string): Promise<Pregunta | null> {
+    return this.preguntaModel.findById(id).exec();
   }
 
-  update(id: number, updatePreguntaDto: UpdatePreguntaDto) {
-    return `This action updates a #${id} pregunta`;
+  async update(id: string, updatePreguntaDto: UpdatePreguntaDto): Promise<Pregunta | null> {
+    return this.preguntaModel.findByIdAndUpdate(id, updatePreguntaDto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} pregunta`;
+  async remove(id: string): Promise<Pregunta | null> {
+    return this.preguntaModel.findByIdAndDelete(id).exec();
   }
 }

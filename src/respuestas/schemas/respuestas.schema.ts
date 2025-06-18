@@ -4,10 +4,13 @@ import { Document } from 'mongoose';
 @Schema({ timestamps: true })
 export class Respuesta extends Document {
   @Prop()
-  tipo: string;
+  texto: string;
 
   @Prop()
-  valor: string;
+  correcta: boolean;
+
+  @Prop()
+  preguntaId: string;
 }
 
 export const RespuestaSchema = SchemaFactory.createForClass(Respuesta);

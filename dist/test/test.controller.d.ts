@@ -4,9 +4,9 @@ import { UpdateTestDto } from './dto/update-test.dto';
 export declare class TestController {
     private readonly testService;
     constructor(testService: TestService);
-    create(createTestDto: CreateTestDto): CreateTestDto;
-    findAll(): string;
-    findOne(id: string): string;
-    update(id: string, updateTestDto: UpdateTestDto): string;
-    remove(id: string): string;
+    create(createTestDto: CreateTestDto): Promise<import("./schemas/test.schema").Test>;
+    findAll(): Promise<import("./schemas/test.schema").Test[]>;
+    findOne(id: string): Promise<import("./schemas/test.schema").Test | null>;
+    update(id: string, updateTestDto: UpdateTestDto): Promise<import("./schemas/test.schema").Test | null>;
+    remove(id: string): Promise<import("./schemas/test.schema").Test | null>;
 }

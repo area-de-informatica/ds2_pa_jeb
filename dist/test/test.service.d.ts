@@ -1,9 +1,13 @@
+import { Model } from 'mongoose';
 import { CreateTestDto } from './dto/create-test.dto';
 import { UpdateTestDto } from './dto/update-test.dto';
+import { Test } from './schemas/test.schema';
 export declare class TestService {
-    create(createTestDto: CreateTestDto): CreateTestDto;
-    findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updateTestDto: UpdateTestDto): string;
-    remove(id: number): string;
+    private readonly testModel;
+    constructor(testModel: Model<Test>);
+    create(createTestDto: CreateTestDto): Promise<Test>;
+    findAll(): Promise<Test[]>;
+    findOne(id: string): Promise<Test | null>;
+    update(id: string, updateTestDto: UpdateTestDto): Promise<Test | null>;
+    remove(id: string): Promise<Test | null>;
 }

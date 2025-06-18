@@ -4,22 +4,22 @@ import { Document } from 'mongoose';
 @Schema({ timestamps: true })
 export class Usuario extends Document {
   @Prop()
-  clave: string;
+  nombre: string;
 
-  @Prop({ unique: true })
+  @Prop()
+  apellido: string;
+
+  @Prop()
   correo: string;
+
+  @Prop()
+  clave: string;
 
   @Prop()
   sexo: string;
 
   @Prop()
   edad: number;
-
-  @Prop()
-  nombre: string;
-
-  @Prop()
-  apellido: string;
 
   @Prop()
   rol: string;

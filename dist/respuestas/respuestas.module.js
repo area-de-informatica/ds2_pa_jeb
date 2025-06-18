@@ -8,13 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RespuestasModule = void 0;
 const common_1 = require("@nestjs/common");
+const mongoose_1 = require("@nestjs/mongoose");
 const respuestas_service_1 = require("./respuestas.service");
 const respuestas_controller_1 = require("./respuestas.controller");
+const respuestas_schema_1 = require("./schemas/respuestas.schema");
 let RespuestasModule = class RespuestasModule {
 };
 exports.RespuestasModule = RespuestasModule;
 exports.RespuestasModule = RespuestasModule = __decorate([
     (0, common_1.Module)({
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                { name: respuestas_schema_1.Respuesta.name, schema: respuestas_schema_1.RespuestaSchema },
+            ]),
+        ],
         controllers: [respuestas_controller_1.RespuestasController],
         providers: [respuestas_service_1.RespuestasService],
     })

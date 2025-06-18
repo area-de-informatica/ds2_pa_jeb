@@ -19,8 +19,8 @@ exports.TestModule = TestModule = __decorate([
     (0, common_1.Module)({
         imports: [
             mongoose_1.MongooseModule.forFeature([
-                { name: test_schema_1.Test.name, schema: test_schema_1.TestSchema }
-            ])
+                { name: test_schema_1.Test.name, schema: test_schema_1.TestSchema },
+            ]),
         ],
         controllers: [test_controller_1.TestController],
         providers: [test_service_1.TestService],

@@ -2,12 +2,15 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema({ timestamps: true })
-export class ReporteAI extends Document {
+export class ReporteAi extends Document {
   @Prop()
-  retroalimentacion: string;
+  usuario: string;
 
   @Prop()
-  calificacion: number;
+  resultado: string;
+
+  @Prop()
+  fecha: string;
 }
 
-export const ReporteAISchema = SchemaFactory.createForClass(ReporteAI);
+export const ReporteAiSchema = SchemaFactory.createForClass(ReporteAi);

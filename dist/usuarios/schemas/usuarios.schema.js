@@ -13,31 +13,15 @@ exports.UsuarioSchema = exports.Usuario = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 let Usuario = class Usuario extends mongoose_2.Document {
-    clave;
-    correo;
-    sexo;
-    edad;
     nombre;
     apellido;
+    correo;
+    clave;
+    sexo;
+    edad;
     rol;
 };
 exports.Usuario = Usuario;
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Usuario.prototype, "clave", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ unique: true }),
-    __metadata("design:type", String)
-], Usuario.prototype, "correo", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Usuario.prototype, "sexo", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", Number)
-], Usuario.prototype, "edad", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
@@ -46,6 +30,22 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Usuario.prototype, "apellido", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "correo", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "clave", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Usuario.prototype, "sexo", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], Usuario.prototype, "edad", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)

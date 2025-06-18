@@ -8,14 +8,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ReporteAiModule = void 0;
 const common_1 = require("@nestjs/common");
+const mongoose_1 = require("@nestjs/mongoose");
 const reporte_ai_service_1 = require("./reporte_ai.service");
-const reporte_ai_controller_1 = require("./reporte_ai.controller");
+const reporte_ai_schema_1 = require("./schemas/reporte_ai.schema");
 let ReporteAiModule = class ReporteAiModule {
 };
 exports.ReporteAiModule = ReporteAiModule;
 exports.ReporteAiModule = ReporteAiModule = __decorate([
     (0, common_1.Module)({
-        controllers: [reporte_ai_controller_1.ReporteAiController],
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                { name: reporte_ai_schema_1.ReporteAi.name, schema: reporte_ai_schema_1.ReporteAiSchema },
+            ]),
+        ],
         providers: [reporte_ai_service_1.ReporteAiService],
     })
 ], ReporteAiModule);

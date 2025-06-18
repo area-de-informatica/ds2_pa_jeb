@@ -12,70 +12,37 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ReporteAiController = void 0;
+exports.ReporteAiService = void 0;
 const common_1 = require("@nestjs/common");
-const reporte_ai_service_1 = require("./reporte_ai.service");
-const create_reporte_ai_dto_1 = require("./dto/create-reporte_ai.dto");
-const update_reporte_ai_dto_1 = require("./dto/update-reporte_ai.dto");
-let ReporteAiController = class ReporteAiController {
-    reporteAiService;
-    constructor(reporteAiService) {
-        this.reporteAiService = reporteAiService;
+const mongoose_1 = require("@nestjs/mongoose");
+const mongoose_2 = require("mongoose");
+const reporte_ai_schema_1 = require("./schemas/reporte_ai.schema");
+let ReporteAiService = class ReporteAiService {
+    reporteModel;
+    constructor(reporteModel) {
+        this.reporteModel = reporteModel;
     }
-    create(createReporteAiDto) {
-        return this.reporteAiService.create(createReporteAiDto);
+    async create(createReporteAiDto) {
+        const reporte = new this.reporteModel(createReporteAiDto);
+        return reporte.save();
     }
-    findAll() {
-        return this.reporteAiService.findAll();
+    async findAll() {
+        return this.reporteModel.find().exec();
     }
-    findOne(id) {
-        return this.reporteAiService.findOne(+id);
+    async findOne(id) {
+        return this.reporteModel.findById(id).exec();
     }
-    update(id, updateReporteAiDto) {
-        return this.reporteAiService.update(+id, updateReporteAiDto);
+    async update(id, dto) {
+        return this.reporteModel.findByIdAndUpdate(id, dto, { new: true }).exec();
     }
-    remove(id) {
-        return this.reporteAiService.remove(+id);
+    async remove(id) {
+        return this.reporteModel.findByIdAndDelete(id).exec();
     }
 };
-exports.ReporteAiController = ReporteAiController;
-__decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_reporte_ai_dto_1.CreateReporteAiDto]),
-    __metadata("design:returntype", void 0)
-], ReporteAiController.prototype, "create", null);
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], ReporteAiController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], ReporteAiController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Patch)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_reporte_ai_dto_1.UpdateReporteAiDto]),
-    __metadata("design:returntype", void 0)
-], ReporteAiController.prototype, "update", null);
-__decorate([
-    (0, common_1.Delete)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], ReporteAiController.prototype, "remove", null);
-exports.ReporteAiController = ReporteAiController = __decorate([
-    (0, common_1.Controller)('reporte-ai'),
-    __metadata("design:paramtypes", [reporte_ai_service_1.ReporteAiService])
-], ReporteAiController);
+exports.ReporteAiService = ReporteAiService;
+exports.ReporteAiService = ReporteAiService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, mongoose_1.InjectModel)(reporte_ai_schema_1.ReporteAi.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model])
+], ReporteAiService);
 //# sourceMappingURL=reporte_ai.controller.js.map

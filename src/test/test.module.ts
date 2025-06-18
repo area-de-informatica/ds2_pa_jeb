@@ -7,8 +7,8 @@ import { Test, TestSchema } from './schemas/test.schema';
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { name: Test.name, schema: TestSchema }
-    ])
+      { name: Test.name, schema: TestSchema },
+    ]),
   ],
   controllers: [TestController],
   providers: [TestService],

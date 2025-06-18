@@ -1,26 +1,35 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { PaqueteRespuesta } from './schemas/paquete_respuestas.schema';
 import { CreatePaqueteRespuestaDto } from './dto/create-paquete_respuesta.dto';
 import { UpdatePaqueteRespuestaDto } from './dto/update-paquete_respuesta.dto';
 
 @Injectable()
 export class PaqueteRespuestasService {
-  create(createPaqueteRespuestaDto: CreatePaqueteRespuestaDto) {
-    return createPaqueteRespuestaDto;
+  constructor(
+    @InjectModel(PaqueteRespuesta.name)
+    private readonly paqueteModel: Model<PaqueteRespuesta>,
+  ) {}
+
+  async create(createDto: CreatePaqueteRespuestaDto): Promise<PaqueteRespuesta> {
+    const paquete = new this.paqueteModel(createDto);
+    return paquete.save();
   }
 
-  findAll() {
-    return `This action returns all paqueteRespuestas`;
+  async findAll(): Promise<PaqueteRespuesta[]> {
+    return this.paqueteModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} paqueteRespuesta`;
+  async findOne(id: string): Promise<PaqueteRespuesta | null> {
+    return this.paqueteModel.findById(id).exec();
   }
 
-  update(id: number, updatePaqueteRespuestaDto: UpdatePaqueteRespuestaDto) {
-    return `This action updates a #${id} paqueteRespuesta`;
+  async update(id: string, updateDto: UpdatePaqueteRespuestaDto): Promise<PaqueteRespuesta | null> {
+    return this.paqueteModel.findByIdAndUpdate(id, updateDto, { new: true }).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} paqueteRespuesta`;
+  async remove(id: string): Promise<PaqueteRespuesta | null> {
+    return this.paqueteModel.findByIdAndDelete(id).exec();
   }
 }
